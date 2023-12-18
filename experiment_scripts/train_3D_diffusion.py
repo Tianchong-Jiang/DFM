@@ -1,6 +1,7 @@
 # adapted from https://github.com/lucidrains/denoising-diffusion-pytorch
 import sys
 import os
+os.environ['HYDRA_FULL_ERROR'] = 1
 import wandb
 import hydra
 from omegaconf import DictConfig

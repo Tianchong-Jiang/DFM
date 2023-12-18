@@ -38,6 +38,8 @@ import lpips
 
 from scipy import interpolate
 
+os.environ['TORCH_HOME'] = '/models'
+
 # constants
 ModelPrediction = namedtuple(
     "ModelPrediction", ["pred_noise", "pred_x_start", "pred_x_start_high_res"]
@@ -570,9 +572,10 @@ class GaussianDiffusion(nn.Module):
     @torch.no_grad()
     def sample(self, batch_size=2, return_all_timesteps=False, inp=None):
         image_size, channels = self.image_size, self.channels
-        sample_fn = (
-            self.p_sample_loop if not self.is_ddim_sampling else self.ddim_sample
-        )
+        sample_fn = self.ddim_sample
+        # sample_fn = (
+        #     self.p_sample_loop if not self.is_ddim_sampling else self.ddim_sample
+        # )
         return sample_fn(
             (batch_size, channels, image_size, image_size),
             return_all_timesteps=return_all_timesteps,
@@ -713,7 +716,7 @@ class GaussianDiffusion(nn.Module):
                 # print("unconditional")
                 inp["ctxt_rgb"] = inp["ctxt_rgb"] * 0.0
         else:
-            uncond = False 
+            uncond = False
         render_cond = True
 
         # predict and take gradient step
@@ -940,7 +943,6 @@ class Trainer(object):
         load_pn=False
     ):
         super().__init__()
-
         self.accelerator = accelerator
         if self.accelerator is None:
             ddp_kwargs = DistributedDataParallelKwargs(find_unused_parameters=True)
@@ -973,7 +975,7 @@ class Trainer(object):
 
         # dataset and dataloader
 
-        self.dataloader = self.accelerator.prepare(dataloader)
+        self.dataloader = dataloader #self.accelerator.prepare(dataloader)
         self.dl = cycle(self.dataloader)
 
         # optimizer
@@ -1021,7 +1023,7 @@ class Trainer(object):
 
         if checkpoint_path is not None and self.accelerator.is_main_process:
             print(f"checkpoint path: {checkpoint_path}")
-            
+
             if self.load_pn:
                 self.load_from_pixelnerf(checkpoint_path)
             else:

@@ -27,6 +27,7 @@ import matplotlib.pyplot as plt
 import torch.nn.functional as F
 from PIL import Image
 
+import pdb
 
 @hydra.main(
     version_base=None, config_path="../configurations/", config_name="config",
@@ -50,7 +51,7 @@ def train(cfg: DictConfig):
     dataset = data_io.get_dataset(cfg)
     dl = DataLoader(
         dataset,
-        batch_size=train_batch_size,
+        batch_size=1,
         shuffle=False,
         pin_memory=True,
         num_workers=0,
@@ -134,7 +135,7 @@ def train(cfg: DictConfig):
         with torch.no_grad():
             for _ in range(1):
                 step = 150
-                for i in re_indices.interesting_indices:
+                for i in re_indices.simple_indices: #.interesting_indices:
                     print(f"Starting rendering step {i}")
                     video_idx = i[0]
 

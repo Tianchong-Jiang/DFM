@@ -94,7 +94,6 @@ class RealEstate10kDatasetOM(Dataset):
         print("loading pose file")
         pose_file = Path(pose_root) / f"{stage}.mat"
         self.all_cam_params = scipy.io.loadmat(pose_file)
-
         dummy_img_path = str(next(scene_path_list[0].glob("*.jpg")))
         dummy_img = cv2.imread(dummy_img_path)
         h, w = dummy_img.shape[:2]

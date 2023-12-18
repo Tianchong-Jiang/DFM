@@ -40,4 +40,14 @@ interesting_indices = [
     (806, "flip"),
 ]
 
+simple_indices = [
+    (0, "flip"),
+    (1, "flip"),
+    (2, "flip"),
+    (3, "flip"),
+    (4, "flip"),
+    (5, "flip"),
+]
+
+
 

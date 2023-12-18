@@ -10,7 +10,7 @@ from data_io.co3d_new import CO3DDataset
 
 def get_path(dataset_name: str) -> str:
     if dataset_name == "realestate10k":
-        return "path"
+        return "/data/realestatemini"
     elif dataset_name in ["CO3D", "CO3DPN"]:
         return "path"
 

@@ -46,10 +46,10 @@ end_idx: 50
 use_abs_pose: False
 test_autoregressive_stepsize: 40
 scale_aug_ratio: 0
-all_class: False 
+all_class: False
 seed: 0
 use_dataset_pose: False
 noise: 0.0
-eval_10_frame: False  
-rebuttal_indices: False 
+eval_10_frame: False
+rebuttal_indices: False
 load_pn: False
