@@ -55,15 +55,15 @@
             "mode": "slurm-sing",
             "mount": [],
             "mount_from_host": {
-                "/share/data/ripl/tc/DFM/data": "/data",
-                "/share/data/ripl/tc/DFM/models": "/models",
+                "/share/data/ripl/tianchong/DFM/data": "/data",
+                "/share/data/ripl/tianchong/DFM/models": "/models",
             },
             "singularity": {
-                "sif_file": "/share/data/ripl/tc/DFM/image/diffusion_tc.sif",
+                "sif_file": "/share/data/ripl/tianchong/DFM/image/diffusion_tc.sif",
                 "writable_tmpfs": true
             },
             "slurm": {
-                "exclude": "gpu0,gpu18,gpu2,gpu16,gpu13",
+                // "exclude": "gpu0,gpu18,gpu2,gpu16,gpu13",
                 "constraint": "48g",
             }
         }

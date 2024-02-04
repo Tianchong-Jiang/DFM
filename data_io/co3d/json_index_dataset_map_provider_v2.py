@@ -261,6 +261,7 @@ class JsonIndexDatasetMapProviderV2(DatasetMapProviderBase):  # pyre-ignore [13]
         available_subset_names = self._get_available_subset_names(category)
         logger.debug(f"Available subset names: {str(available_subset_names)}.")
         if self.subset_name not in available_subset_names:
+            import pdb; pdb.set_trace()
             raise ValueError(
                 f"Unknown subset name {self.subset_name}."
                 + f" Choose one of available subsets: {str(available_subset_names)}."

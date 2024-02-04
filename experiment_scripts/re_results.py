@@ -135,7 +135,8 @@ def train(cfg: DictConfig):
         with torch.no_grad():
             for _ in range(1):
                 step = 150
-                for i in re_indices.simple_indices: #.interesting_indices:
+                for i in re_indices.interesting_indices:
+                # for i in re_indices.simple_indices:
                     print(f"Starting rendering step {i}")
                     video_idx = i[0]
 

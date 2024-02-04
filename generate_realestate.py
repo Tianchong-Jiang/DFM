@@ -81,7 +81,7 @@ class DataDownloader:
         print("[INFO] Loading data list ... ",end='')
         self.dataroot = dataroot
         self.list_seqnames = sorted(glob.glob(dataroot + '/*.txt'))
-        self.output_root = '/data/realestatemini2/' + mode + '/'
+        self.output_root = '/data/realestate10k/' + mode + '/'
 
         if not os.path.exists(self.output_root):
             os.makedirs(self.output_root)
@@ -199,7 +199,7 @@ if __name__ == "__main__":
         print("invalid mode")
         quit()
 
-    dataroot = "/data/RealEstateMini/" + mode
+    dataroot = "/data/RealEstate10K/" + mode
     downloader = DataDownloader(dataroot, mode)
 
     downloader.Show()
